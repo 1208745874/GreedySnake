@@ -156,6 +156,11 @@ bool moveSnake(){
     //detect the snake itself
     auto bodyPart=find_if(snake.begin(),snake.end(),[&](const Point&p){return p.x==newHead.x&&p.y==newHead.y;});
     if(bodyPart!=snake.end()&&bodyPart!=snake.end()-1){return false;}
+    //above AI said should detect if the food is ate
+    //if so, make sure that none of the bodypart is touched
+    //if not, the tail being touched is allowed
+    //but I find that that's not necessary
+    //because if newHead's point equals food's point,that means definitely newHead doesnt touch any of other bodypart
 
     snake.push_front(newHead);
 
